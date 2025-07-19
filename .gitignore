@@ -1,0 +1,106 @@
+﻿# Visual Studio files
+.vs/
+*.suo
+*.user
+*.bak
+*.ncb
+*.opendata
+*.VC.db
+*.VC.opendb
+*.sdf
+*.vshost.*
+*.testsettings
+*.trx
+*.webtest
+*.coverage
+*.cache
+*.log
+*.obj
+*.pdb
+*.pidb
+*.dll
+*.exe
+*.manifest
+*.res
+*.resources
+*.tlb
+*.tlh
+*.tli
+*.tmp
+*.vspscc
+*.vssscc
+*.buildscc
+*.scc
+
+# Build artifacts
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Pp]ublish/
+*.nupkg
+*.snk
+*.resharper
+*.dotsettings.user
+*.userprefs
+
+# NuGet packages
+packages/
+*.nuget.props
+*.nuget.targets
+
+# Test results
+TestResults/
+
+# .NET tool files
+.config/dotnet-tools.json
+.config/dotnet-tools.local.json
+
+# Local user secrets
+appsettings.Development.json # Or other appsettings.*.json that contain local secrets
+appsettings.json.user
+
+# SQLite database files (if used locally for development)
+*.db
+*.db-shm
+*.db-wal
+
+# Rider / IntelliJ IDEA files
+.idea/
+*.iml
+
+# VS Code files (if you don't want to share workspace settings)
+.vscode/
+
+# Node.js (if you have a frontend project within the same repo)
+node_modules/
+npm-debug.log
+yarn-error.log
+.pnp/
+.pnp.js
+
+# Other common temporary files
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+*.bz2
+
+# Editor-specific files
+*~
+.#*
+*.swp
+*.swo
+
+# macOS files
+.DS_Store
+
+# Linux specific files
+*~
+
+# Misc
+*.pid
+*.lock
+*.core
+*.stackdump
