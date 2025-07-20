@@ -1,6 +1,7 @@
 ﻿using login_app.DTOs;
 using login_app.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -53,7 +54,9 @@ namespace login_app.Controllers
 
         }
 
-        [HttpPost("user-login")]
+
+        [EnableRateLimiting("fixed")]
+        [HttpPost("user-login")]      
         public async Task<IActionResult> AuthenticateUser([FromBody] UserLogin userLogin)
         {
             try

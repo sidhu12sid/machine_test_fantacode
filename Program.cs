@@ -3,9 +3,11 @@ using login_app.Models;
 using login_app.Repositories;
 using login_app.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,17 +45,31 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+//jwt setup end
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//jwt setup end
+builder.Services.AddRateLimiter(options =>
+{
+
+    options.AddFixedWindowLimiter("fixed", opt =>
+    {
+        opt.Window = TimeSpan.FromSeconds(15); 
+        opt.PermitLimit = 4; 
+        opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst; 
+        opt.QueueLimit = 0; 
+    });
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+});
 
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
 app.UseHttpsRedirection();
+
+app.UseRateLimiter();
 
 app.UseAuthorization();
 
