@@ -38,38 +38,52 @@ namespace login_app.Services
             }
         }
 
-        public async Task<ResponseModel<LoginResponseModel>> UserLogin(UserLogin login)
+        public async Task<ResponseModel<LoginResponse>> UserLogin(UserLogin login)
         {
-            ResponseModel<LoginResponseModel> userLoginDeatils = new ResponseModel<LoginResponseModel>();
+            var response = new ResponseModel<LoginResponse>();
             try
             {
                 var result = await _authRepository.GetUserByName(login.UserName ?? "");
-                if(result != null)
+                if (result != null)
                 {
-                    var isPasswordOk = _passwordHasher.VerifyPassword(login?.Password, result?.Password); //validating the user password.
-                    LoginResponseModel? response = new LoginResponseModel();
-                    if (isPasswordOk)
+                    //Validating the password
+                    var isPasswordOk = _passwordHasher.VerifyPassword(login.Password, result.Password);
+                    if (!isPasswordOk)
                     {
-                        var accessToken = _jwtHandler.GenerateJwtToken(result?.Id.ToString(), result?.Username);
-                        response.AccessToken = accessToken;
-                        response.UserName = result?.Username;
-
-
+                        response.status = false;
+                        response.error = true;
+                        response.message = "Incorrect password";
+                        response.data = new LoginResponse { };
                     }
                     else
                     {
-                        response = null;
-                    }
+                        var accesssToken = _jwtHandler.GenerateJwtToken(result.Id.ToString(), result.Username);
+                        LoginResponse userDetails = new LoginResponse()
+                        {
+                            AccessToken = accesssToken,
+                            UserName = result.Username,
+                        };
 
-                    
-                    
+                        response.status = true;
+                        response.error = false;
+                        response.message = "Login successfull";
+                        response.data = userDetails;
+                    }
                 }
+                else
+                {
+                    response.status = false;
+                    response.error = true;
+                    response.message = "Incorrect username";
+                    response.data = new LoginResponse { };
+                }
+                
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);  
             }
-            return userLoginDeatils;
+            return response;
         }
     }
 }

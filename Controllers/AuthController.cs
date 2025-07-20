@@ -58,15 +58,17 @@ namespace login_app.Controllers
         {
             try
             {
-                return StatusCode(200, new
+                var result = await _authService.UserLogin(userLogin);
+                if (!result.status)
                 {
-                    error = false,
-                    status = true,
-                    message = "Login successfull",
-                    data = new { }
-                });
+                    return StatusCode(401, result);
+                }
+                else
+                {
+                    return StatusCode(200, result);
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(417, new
                 {

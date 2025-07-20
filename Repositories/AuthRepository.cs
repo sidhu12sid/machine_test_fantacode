@@ -32,13 +32,8 @@ namespace login_app.Repositories
         {
             try
             {
-                var user = await _dbContext.Users.Where(q => q.Username.Equals(userName, StringComparison.CurrentCultureIgnoreCase))
-                    .FirstOrDefaultAsync();
-                if(user != null)
-                {
-                    return user;
-                }
-                return null;
+                var user = await _dbContext.Users.Where(q => q.Username != null && userName != null && q.Username.ToLower() == userName.ToLower()).FirstOrDefaultAsync();
+                return user;
             }
             catch(Exception ex)
             {

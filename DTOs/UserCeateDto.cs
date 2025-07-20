@@ -13,7 +13,7 @@
         public string? Password { get; set; }
     }
 
-    public class LoginResponseModel
+    public class LoginResponse
     {
         public string? AccessToken { get; set; }
         public string? UserName { get; set; }
