@@ -10,10 +10,8 @@
           <p>Welcome, <span>Kindly login to continue</span></p>
         </div>
         <div class="formdiv">
-          <form [formGroup]="loginForm">
-          <!-- <label for="user-name">Username: </label> -->
+          <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
           <input id="user-name" type="text" formControlName="userName" placeholder="Username"/>
-          <!-- <label for="password">Password: </label> -->
           <input id="pass-word" type="password" formControlName="passWord" placeholder="Password"/>
           <button type="submit">Login</button>
         </form>
