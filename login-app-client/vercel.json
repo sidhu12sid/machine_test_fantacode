@@ -2,15 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/login-app-client/browser/**",
+      "src": "login-app-client/dist/login-app-client/**/*",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/login-app-client/dist/login-app-client/$1"
     }
-  ],
-  "cleanUrls": true
+  ]
 }
