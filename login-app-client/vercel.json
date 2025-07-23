@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "login-app-client/dist/login-app-client/**/*",
+      "src": "dist/login-app-client/**/*",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/login-app-client/dist/login-app-client/$1"
+      "dest": "dist/login-app-client/$1"
     }
   ]
 }
