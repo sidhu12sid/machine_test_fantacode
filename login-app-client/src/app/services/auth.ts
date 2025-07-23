@@ -17,7 +17,7 @@ export class Auth {
   // }
 
   async login(data :LoginRequest){
-      const response = await firstValueFrom(this.http.post<ApiResponse<LoginResponse>>(this.baseUrl + '/Auth/user-login', data));
+      const response = await firstValueFrom(this.http.post<ApiResponse<LoginResponse>>(this.baseUrl + 'Auth/user-login', data));
       return response;
   }
 }

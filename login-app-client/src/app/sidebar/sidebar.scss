@@ -1,0 +1,30 @@
+.hamburger {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+  z-index: 1001;
+
+  svg rect {
+    fill: #333;
+  }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 280px;
+  height: 100%;
+  background-color: #7000a5;
+  color: white;
+  padding: 20px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  &.open {
+    left: 0;
+  }
+  .items{
+    margin-top:38px;
+  }
+}

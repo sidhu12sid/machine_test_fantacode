@@ -8,7 +8,7 @@ export interface ApiResponse<T> {
 
 export interface LoginResponse {
   accessToken:string;
-  username:string;
+  userName:string;
 }
 
 export interface LoginRequest{
