@@ -1,18 +1,8 @@
 {
-  "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "login-app-client/dist/login-app-client/browser/**/*",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/.*",
-      "dest": "login-app-client/dist/login-app-client/browser/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
