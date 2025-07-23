@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/login-app-client/browser/**/*",
+      "src": "login-app-client/dist/login-app-client/browser/**/*",
       "use": "@vercel/static"
     }
   ],
@@ -12,7 +12,7 @@
     },
     {
       "src": "/.*",
-      "dest": "dist/login-app-client/browser/index.html"
+      "dest": "login-app-client/dist/login-app-client/browser/index.html"
     }
   ]
 }
