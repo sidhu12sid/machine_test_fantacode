@@ -11,6 +11,17 @@ using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularClient", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200") 
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials(); // optional, if you need cookies or auth headers
+    });
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -66,6 +77,7 @@ builder.Services.AddRateLimiter(options =>
 
 var app = builder.Build();
 
+app.UseCors("AllowAngularClient");
 // Configure the HTTP request pipeline.
 app.UseHttpsRedirection();
 

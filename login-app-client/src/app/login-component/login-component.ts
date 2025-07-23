@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Auth } from '../services/auth';
 import { LoginRequest } from '../interfaces/login-response';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-component',
@@ -11,7 +12,7 @@ import { LoginRequest } from '../interfaces/login-response';
 })
 export class LoginComponent {
 
-  constructor(private authService : Auth){}
+  constructor(private authService : Auth, private router:Router){}
 
   loginForm = new FormGroup({
     userName : new FormControl(''),
@@ -28,6 +29,8 @@ async loginUser(){
     const response = await this.authService.login(payLoad);
     if(response.status &&  !response.error){
       console.log(response.message, response.data);
+      localStorage.setItem('Username', response.data.userName);
+      this.router.navigate(['/dashboard'], { replaceUrl: true }); // preventing going back to login page after login success
     }else{
       console.log(response.message, response.data);
     }
