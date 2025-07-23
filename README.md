@@ -24,7 +24,6 @@ A full-stack project built with **.NET 8 (ASP.NET Core)** for the backend and **
 - ✅ Sidebar navigation layout
 - ✅ Bar chart showing dummy sales data
 - ✅ Persistent user data using SQLite
-- ✅ Clean architecture using EF Core's code-first approach
 
 ---
 
