@@ -55,7 +55,6 @@ I have published the apis to the azure app services. Below are the curls to the 
 - ✅ Persistent user data using SQLite
 
 ---
-
 ## 🧑‍💻 Demo Credentials
 
 Use the following credentials to log in:
@@ -63,3 +62,4 @@ Use the following credentials to log in:
 ```txt
 Username: Sidharth  
 Password: Pass@123
+
