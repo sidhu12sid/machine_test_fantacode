@@ -49,6 +49,15 @@ packages/
 *.nuget.props
 *.nuget.targets
 
+# Ignore SQLite database files
+*.db
+*.db-shm
+*.db-wal
+
+# Ignore Entity Framework migration snapshots if needed
+# (uncomment if you want to exclude model snapshots)
+# Migrations/*Snapshot.cs
+
 # Test results
 TestResults/
 
