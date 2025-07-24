@@ -23,7 +23,7 @@ You can find the frontend code in login-client-app folder. Or you can refer this
 ---
 
 ### APIs
-I have published the apis to the azure app services.
+I have published the apis to the azure app services. Below are the curls to the respective urls.
 - User create api
 
     `curl --location 'https://machinetest-fantacode-b0asgtbvb4cuf0eq.canadacentral-01.azurewebsites.net/api/Auth/register-user' \
