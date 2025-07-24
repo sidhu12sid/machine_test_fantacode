@@ -20,6 +20,7 @@ A full-stack project built with **.NET 8 (ASP.NET Core)** for the backend and **
 ##APIs
 I have published the apis to the azure app services.
 - User create api
+
     `curl --location 'https://machinetest-fantacode-b0asgtbvb4cuf0eq.canadacentral-01.azurewebsites.net/api/Auth/register-user' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -28,7 +29,9 @@ I have published the apis to the azure app services.
   "email": "sidharth@yahoo.in"
 }
 '`
+
 - Login api
+  
     `curl --location 'https://machinetest-fantacode-b0asgtbvb4cuf0eq.canadacentral-01.azurewebsites.net/api/Auth/user-login' \
 --header 'Content-Type: application/json' \
 --data-raw '{
