@@ -17,6 +17,26 @@ A full-stack project built with **.NET 8 (ASP.NET Core)** for the backend and **
 
 ---
 
+##APIs
+I have published the apis to the azure app services.
+- User create api
+    `curl --location 'https://machinetest-fantacode-b0asgtbvb4cuf0eq.canadacentral-01.azurewebsites.net/api/Auth/register-user' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "username": "Sidharth",
+  "password": "Pass@123",
+  "email": "sidharth@yahoo.in"
+}
+'`
+- Login api
+    `curl --location 'https://machinetest-fantacode-b0asgtbvb4cuf0eq.canadacentral-01.azurewebsites.net/api/Auth/user-login' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "userName": "sidharth",
+  "password": "Pass@123"
+}
+'`
+
 ## 🔐 Features
 
 - ✅ Login page with hardcoded user authentication
@@ -33,4 +53,4 @@ Use the following credentials to log in:
 
 ```txt
 Username: Sidharth  
-Password: 123456
+Password: Pass@123
