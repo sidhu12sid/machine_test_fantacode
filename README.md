@@ -23,7 +23,7 @@ You can find the frontend code in login-client-app folder. Or you can refer this
 ---
 
 ### APIs
-I have published the apis to the azure app services. Below are the curls to the respective APIs.
+The APIs are published to the azure app services. Below are the curls to the respective APIs.
 
 - User create api
 
