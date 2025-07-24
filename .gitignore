@@ -60,10 +60,7 @@ TestResults/
 appsettings.Development.json # Or other appsettings.*.json that contain local secrets
 appsettings.json.user
 
-# SQLite database files (if used locally for development)
-*.db
-*.db-shm
-*.db-wal
+
 
 # Rider / IntelliJ IDEA files
 .idea/

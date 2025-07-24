@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Auth } from '../services/auth';
 import { LoginRequest } from '../interfaces/login-response';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-component',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private authService : Auth, private router:Router){}
+  constructor(private authService : Auth, private router:Router, private toaster: ToastrService){}
 
   loginForm = new FormGroup({
     userName : new FormControl(''),
@@ -28,15 +29,16 @@ async loginUser(){
   try{
     const response = await this.authService.login(payLoad);
     if(response.status &&  !response.error){
-      console.log(response.message, response.data);
+      this.toaster.success(response.message, 'Success!');
       localStorage.setItem('Username', response.data.userName);
       this.router.navigate(['/dashboard'], { replaceUrl: true }); // preventing going back to login page after login success
     }else{
-      console.log(response.message, response.data);
+
+      this.toaster.error(response.message, 'Failed');
     }
   }
-  catch(error){
-    console.log('Login failed', error)
+  catch(error : any){
+     this.toaster.error(error.error.message, 'Failed');
   }
 
 }
