@@ -5,7 +5,7 @@ You can access the deployed frontend site at :
 
 [Deployed Frontend](https://login-app-client.vercel.app/)
 
-You can find the frontend code in login-client-app folder.
+You can find the frontend code in login-client-app folder. Or you can refer this repo [Frontend Repo](https://github.com/sidhu12sid/login-app-client)
 
 ---
 
