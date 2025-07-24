@@ -33,6 +33,27 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJWTHandler, JWTHandler>();
 builder.Services.AddScoped<IPasswordHashingService, PasswordHashingService>();
 
+var env = builder.Environment;
+
+if (!env.IsDevelopment())
+{
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+}
+else
+{
+    var dbPath = Path.Combine(Environment.GetEnvironmentVariable("HOME") ?? ".", "data", "app.db");
+    Directory.CreateDirectory(Path.GetDirectoryName(dbPath)!);
+
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseSqlite($"Data Source={dbPath}"));
+ 
+}
+
+
+//builder.Services.AddDbContext<AppDbContext>(options =>
+//    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 //jwt setup start
 
 builder.Services.AddAuthentication(options =>
@@ -58,8 +79,6 @@ builder.Services.AddAuthentication(options =>
 
 //jwt setup end
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddRateLimiter(options =>
 {
@@ -76,6 +95,12 @@ builder.Services.AddRateLimiter(options =>
 
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.Migrate();
+}
 
 app.UseCors("AllowAngularClient");
 // Configure the HTTP request pipeline.
