@@ -5,6 +5,8 @@ You can access the deployed frontend site at :
 
 [Deployed Frontend](https://login-app-client.vercel.app/)
 
+You can find the frontend code in login-client-app folder.
+
 ---
 
 ## 🚀 Tech Stack
@@ -45,8 +47,8 @@ I have published the apis to the azure app services.
 
 ## 🔐 Features
 
-- ✅ Login page with hardcoded user authentication
-- ✅ Protected dashboard with routing
+- ✅ Login page with  user authentication
+- ✅ Dashboard with routing
 - ✅ Sidebar navigation layout
 - ✅ Bar chart showing dummy sales data
 - ✅ Persistent user data using SQLite
