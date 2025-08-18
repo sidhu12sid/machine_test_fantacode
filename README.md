@@ -1,4 +1,4 @@
-# 🧪 FantaCode Machine Test
+# 🧪 Simple Authentication system using dotnet core and JWT
 
 A full-stack project built with **.NET 8 (ASP.NET Core)** for the backend and **Angular 20** for the frontend. It includes a login system, a dashboard with a sidebar, and a bar chart displaying sales data using **Chart.js**.
 You can access the deployed frontend site at :
